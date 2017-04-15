@@ -2,6 +2,8 @@
 
 {% block content %}
     <h1>{{ meta['title'] }}</h1>
+    <pre class="keylighter"><code>{{ paste|highlight(language) }}</code></pre>
+
     <form action="/{{ meta['slug'] }}" method="post" class="form absolute">
         <label for="title">Title =></label>
         <input name="title" id="title" value="{{ meta['title'] }}"/>
@@ -20,7 +22,6 @@
 
         <button type="submit">ok</button>
     </form>
-    <pre class="keylighter"><code>{{ paste|highlight(language) }}</code></pre>
 {% endblock %}
 
 {% block scripts %}

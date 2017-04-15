@@ -48,6 +48,14 @@ form.absolute {
   }
 }
 
+@media(max-width: 600px) {
+  form.absolute {
+    position: static;
+    width: 100%;
+    opacity: 1;
+  }
+}
+
 input, textarea {
   display: block;
   border: none;
