@@ -1,0 +1,32 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <form action="/" method="post">
+        <label for="paste">Code =></label>
+        <textarea name="paste" id="paste" cols="30" rows="20"></textarea>
+
+        <label for="title">Title =></label>
+        <input name="title" id="title" />
+
+        <label for="author">Author =></label>
+        <input name="author" id="author" />
+
+        <label for="language">Language =></label>
+        <input name="language" id="language" />
+
+        <label for="key">Key =></label>
+        <input name="key" id="key"/>
+
+        <label for="description">Description =></label>
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+
+        <button type="submit">ok</button>
+    </form>
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        document.getElementById('key').value = window.localStorage.getItem("key")
+    </script>
+{% endblock %}

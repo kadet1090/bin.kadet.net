@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3979b1e59a8525b809d37ba686680b11",
+    "content-hash": "c825d84ce491049b4e5912478b000dc9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -478,22 +478,23 @@
         },
         {
             "name": "kadet/keylighter",
-            "version": "v0.8.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kadet1090/KeyLighter.git",
-                "reference": "0d2e6e4e542c282c22c66567174554ad67d047be"
+                "reference": "37731794bccc482bcd5d783ce99fce5f147be14f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kadet1090/KeyLighter/zipball/0d2e6e4e542c282c22c66567174554ad67d047be",
-                "reference": "0d2e6e4e542c282c22c66567174554ad67d047be",
+                "url": "https://api.github.com/repos/kadet1090/KeyLighter/zipball/37731794bccc482bcd5d783ce99fce5f147be14f",
+                "reference": "37731794bccc482bcd5d783ce99fce5f147be14f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.0"
             },
             "require-dev": {
+                "easybook/geshi": "v1.0.8.18",
                 "phpunit/phpunit": "4.8.*",
                 "symfony/console": "^2.8|^3.0"
             },
@@ -523,7 +524,7 @@
                 }
             ],
             "description": "Yet another syntax highlighter for PHP",
-            "time": "2016-09-16T21:34:34+00:00"
+            "time": "2017-03-31 18:28:46"
         },
         {
             "name": "monolog/monolog",
@@ -2976,7 +2977,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "kadet/keylighter": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

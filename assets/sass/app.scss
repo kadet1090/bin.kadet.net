@@ -1,0 +1,64 @@
+@import "../../vendor/kadet/keylighter/Styles/Html/keylighter";
+@import "../fonts/fira/fira_code.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  background: $background;
+
+  padding: 1rem 3rem !important;
+}
+
+h1 {
+  font-family: sans-serif;
+  font-weight: 200;
+  color: $foreground;
+  margin-bottom: 15px;
+}
+
+pre {
+  margin: 0;
+
+  font-weight: 400;
+  font-size: 14px;
+}
+
+code {
+  font-family: 'Fira Code', 'Fira Mono', monospace !important;
+  line-height: 1.5;
+  font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
+  text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+form.absolute {
+  width: 400px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  opacity: .03;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+input, textarea {
+  display: block;
+  border: none;
+  background: white;
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-family: 'Fira Code', 'Fira Mono', monospace !important;
+}
+
+label {
+  color: $foreground;
+  font-family: "Fira Code", monospacec;
+}

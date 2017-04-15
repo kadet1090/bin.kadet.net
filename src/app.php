@@ -11,8 +11,14 @@ $app->register(new ServiceControllerServiceProvider());
 $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
-$app['twig'] = $app->extend('twig', function ($twig, $app) {
-    // add custom globals, filters, tags, ...
+
+$app['twig'] = $app->extend('twig', function (Twig_Environment $twig, $app) {
+    $twig->addFilter(new Twig_Filter('highlight', function($source, $language) {
+        return \Kadet\Highlighter\KeyLighter::get()->highlight(
+            $source,
+            \Kadet\Highlighter\KeyLighter::get()->getLanguage($language)
+        );
+    }, ['is_safe' => ['html']]));
 
     return $twig;
 });

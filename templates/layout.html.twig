@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
         <title>{% block title '' %} Kadet's Bin</title>
 
-        <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     </head>
     <body>
         {% block content '' %}
+        {% block scripts '' %}
     </body>
 </html>
