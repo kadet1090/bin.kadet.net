@@ -7,6 +7,22 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
+function saveTableToDb(\Doctrine\DBAL\Schema\AbstractSchemaManager $schema, \Doctrine\DBAL\Schema\Table $table) {
+    static $comparator = false;
+    if(!$comparator) {
+        $comparator = new \Doctrine\DBAL\Schema\Comparator();
+    }
+
+    if($schema->tablesExist([ $table->getName() ])) {
+        $diff = $comparator->diffTable($schema->listTableDetails($table->getName()), $table);
+        if($diff !== false) {
+            $schema->alterTable($diff);
+        }
+    } else {
+        $schema->createTable($table);
+    }
+}
+
 $console = new Application('Kadet\s pastebin', 'n/a');
 $console->getDefinition()->addOption(new InputOption('--env', '-e', InputOption::VALUE_REQUIRED, 'The Environment name.', 'dev'));
 $console->setDispatcher($app['dispatcher']);
@@ -20,22 +36,23 @@ $console
         /** @var Doctrine\DBAL\Connection $db */
         $db = $app['db'];
 
-        $posts = new \Doctrine\DBAL\Schema\Table('pastes');
-        $posts->addColumn('slug', Type::STRING, ['length' => 32]);
-        $posts->addColumn('author', Type::STRING, ['length' => 32])->setNotnull(false);
+        $pastes = new \Doctrine\DBAL\Schema\Table('pastes');
+        $pastes->addColumn('slug', Type::STRING, ['length' => 32]);
+        $pastes->addColumn('author', Type::STRING, ['length' => 32])->setNotnull(false);
 
-        $posts->addColumn('title', Type::STRING, ['length' => 128])->setNotnull(false);
-        $posts->addColumn('description', Type::TEXT)->setNotnull(false);
+        $pastes->addColumn('title', Type::STRING, ['length' => 128])->setNotnull(false);
+        $pastes->addColumn('description', Type::TEXT)->setNotnull(false);
 
-        $posts->addColumn('key', Type::STRING, ['length' => 60]);
+        $pastes->addColumn('key', Type::STRING, ['length' => 60]);
 
-        $posts->addColumn('added', Type::DATETIME);
+        $pastes->addColumn('added', Type::DATETIME);
 
-        $posts->addColumn('language', Type::STRING, ['length' => 48])->setNotnull(false);
+        $pastes->addColumn('language', Type::STRING, ['length' => 48])->setNotnull(false);
+        $pastes->addColumn('lines', Type::STRING, ['length' => 255])->setNotnull(false);
 
-        $posts->addIndex(['slug']);
+        $pastes->addIndex(['slug'], 'slug_idx');
 
-        $db->getSchemaManager()->createTable($posts);
+        saveTableToDb($db->getSchemaManager(), $pastes);
     })
 ;
 

@@ -33,9 +33,18 @@ $app->get('/{slug}', function ($slug) use ($app, $db) {
     $paste = file_get_contents(paste_path($slug));
     $meta = $db->fetchAssoc('SELECT * FROM pastes WHERE slug = :slug', [ 'slug' => $slug ]);
     $language = $meta['language'] ?? 'text';
+    $meta['added'] = DateTime::createFromFormat('Y-m-d H:i:s', $meta['added']);
 
     return $app['twig']->render('paste.html.twig', compact('paste', 'meta', 'language'));
 })->bind('paste');
+
+$app->get('/{slug}/raw', function ($slug) use ($app, $db) {
+    if(!file_exists(paste_path($slug))) {
+        return $app->abort(404);
+    }
+
+    return new Response(file_get_contents(paste_path($slug)), 200, ['Content-Type' => 'text/plain']);
+})->bind('paste-raw');
 
 $app->post('/', function(Request $request) use ($db, $app) {
     $slug = uniqid(null, true);

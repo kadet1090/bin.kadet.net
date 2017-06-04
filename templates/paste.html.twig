@@ -1,8 +1,19 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <h1>{{ meta['title'] }}</h1>
-    <pre class="keylighter"><code>{{ paste|highlight(language) }}</code></pre>
+    <header id="header">
+        <h1>{{ meta['title'] }}</h1>
+        <aside>
+            <i class="fa fa-user"></i> {{ meta['author'] }} &bullet;
+            <i class="fa fa-code"></i> {{ meta['language'] }} &bullet;
+            <i class="fa fa-calendar-o"></i> {{ meta['added'].format('d.m.Y H:i') }}
+
+            {% if meta['description'] %}
+                <p>{{ meta['description'] }}</p>
+            {% endif %}
+        </aside>
+    </header>
+    <pre class="keylighter">{{ paste|highlight(language)|lineify }}</pre>
 
     <form action="/{{ meta['slug'] }}" method="post" class="form absolute">
         <label for="title">Title =></label>

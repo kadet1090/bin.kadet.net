@@ -1,22 +1,31 @@
-@import "../../vendor/kadet/keylighter/Styles/Html/keylighter";
+@import "../../vendor/kadet/keylighter/Styles/Html/github";
 @import "../fonts/fira/fira_code.css";
+
+@import "../../node_modules/font-awesome/scss/font-awesome";
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,500&subset=latin-ext');
 
 * {
   box-sizing: border-box;
 }
 
+$block-padding: 5rem;
+$footer-height: 25px;
+
+$colors
+
 html, body {
   margin: 0;
   background: $background;
 
-  padding: 1rem 3rem !important;
+  padding: 0;
+
+  font-family: 'Raleway', sans-serif;
+  color: $foreground;
 }
 
-h1 {
-  font-family: sans-serif;
-  font-weight: 200;
-  color: $foreground;
-  margin-bottom: 15px;
+a {
+  text-decoration: none;
 }
 
 pre {
@@ -24,6 +33,70 @@ pre {
 
   font-weight: 400;
   font-size: 14px;
+
+  &.keylighter {
+    padding: 1rem 0 !important;
+
+    .line {
+      padding: 0 $block-padding;
+      code {
+        position: relative;
+
+        span.counter {
+          position: absolute;
+          right: 100%;
+          white-space: nowrap;
+          padding-right: 20px;
+
+          &::before {
+            content: attr(data-ln);
+            @extend .comment;
+          }
+        }
+      }
+    }
+  }
+}
+
+#header {
+  padding: 0 $block-padding;
+
+
+  h1 {
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+
+  aside {
+    p {
+      font-weight: 300;
+    }
+  }
+
+  margin-bottom: 15px;
+}
+
+#footer {
+  padding: 0 $block-padding;
+  position: fixed;
+  bottom: 2rem; left: 0; right: 0;
+
+  line-height: $footer-height;
+  height: $footer-height;
+  text-align: right;
+
+  filter: grayscale(100%);
+
+  img {
+    height: $footer-height;
+    display: inline-block;
+    margin-left: .3rem;
+    float: right;
+  }
+
+  transition: opacity .4s ease, filter .4s ease;
+  opacity: .5;
+  &:hover { opacity: 1; filter: none }
 }
 
 code {
