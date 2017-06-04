@@ -44,7 +44,7 @@ $app['twig'] = $app->extend('twig', function (Twig_Environment $twig, $app) {
         return $result;
     }, ['is_safe' => ['html']]));
 
-    $twig->addGlobal('version', '123456');
+    $twig->addGlobal('version', trim(`git rev-parse --short HEAD`));
 
     return $twig;
 });
