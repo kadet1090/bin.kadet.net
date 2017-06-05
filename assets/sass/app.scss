@@ -1,6 +1,4 @@
-@import "../../vendor/kadet/keylighter/Styles/Html/github";
 @import "../fonts/fira/fira_code.css";
-
 @import "../../node_modules/font-awesome/scss/font-awesome";
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,500&subset=latin-ext');
@@ -9,36 +7,46 @@
   box-sizing: border-box;
 }
 
+@mixin hoverble($opacity: .2) {
+  transition: opacity .4s ease, filter .4s ease;
+
+  filter: grayscale(100%);
+  opacity: $opacity;
+
+  &:hover { opacity: 1; filter: none }
+}
+
 $block-padding: 5rem;
-$footer-height: 25px;
+$footer-height: 1.5rem;
 
 html, body {
   margin: 0;
-  background: $background;
-
   padding: 0;
 
   font-family: 'Raleway', sans-serif;
-  color: $foreground;
 }
 
 a {
   text-decoration: none;
 }
 
+.empty { opacity: .1 }
+
 pre {
   margin: 0;
 
   font-weight: 400;
   font-size: 14px;
+  overflow-x: auto;
 
   &.keylighter {
     padding: 1rem 0 !important;
 
     .line {
-      padding: 0 $block-padding;
+      padding-left: $block-padding;
       code {
         position: relative;
+        white-space: pre;
 
         span.counter {
           position: absolute;
@@ -48,7 +56,6 @@ pre {
 
           &::before {
             content: attr(data-ln);
-            @extend .comment;
           }
         }
       }
@@ -58,7 +65,6 @@ pre {
 
 #header {
   padding: 0 $block-padding;
-
 
   h1 {
     font-weight: 300;
@@ -72,18 +78,17 @@ pre {
   }
 
   margin-bottom: 15px;
+
+  @include hoverble(.1);
 }
 
 #footer {
   padding: 0 $block-padding;
-  position: fixed;
-  bottom: 2rem; left: 0; right: 0;
+  margin: 2rem 0;
 
   line-height: $footer-height;
   height: $footer-height;
   text-align: right;
-
-  filter: grayscale(100%);
 
   img {
     height: $footer-height;
@@ -92,16 +97,14 @@ pre {
     float: right;
   }
 
-  transition: opacity .4s ease, filter .4s ease;
-  opacity: .5;
-  &:hover { opacity: 1; filter: none }
+  @include hoverble;
 }
 
 code {
   font-family: 'Fira Code', 'Fira Mono', monospace !important;
   line-height: 1.5;
-  font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
-  text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
+  font-feature-settings: "calt" 1;
+  text-rendering: optimizeLegibility;
   white-space: pre-wrap;
   word-break: break-all;
 }
@@ -138,6 +141,5 @@ input, textarea {
 }
 
 label {
-  color: $foreground;
-  font-family: "Fira Code", monospacec;
+  font-family: "Fira Code", monospace;
 }

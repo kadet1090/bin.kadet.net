@@ -1,0 +1,28 @@
+$color-foreground: black !default;
+$color-background: white !default;
+
+$color-line: gray !default;
+$color-link: blue !default;
+
+$color-highlight: rgba(orange, .2) !default;
+
+html, body {
+  color: $color-foreground;
+  background-color: $color-background;
+}
+
+pre {
+  .line {
+    &.highlight {
+      background-color: $color-highlight;
+    }
+
+    .counter {
+      color: $color-line;
+    }
+  }
+}
+
+a {
+  color: $color-link !important;
+}

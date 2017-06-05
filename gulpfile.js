@@ -24,7 +24,7 @@ gulp.task('fonts', ['fonts:fira-code', 'fonts:font-awesome']);
 
 gulp.task("styles", function () {
     var scss =
-        gulp.src(dir + 'sass/*.scss').pipe(sass({
+        gulp.src(dir + 'sass/**/*.scss').pipe(sass({
             includePaths: [
                 'node_modules/bootstrap-sass/assets/stylesheets/'
             ]

@@ -2,11 +2,13 @@
 
 {% block content %}
     <header id="header">
-        <h1>{{ meta['title'] }}</h1>
+        <h1 {% if meta['title'] is empty %}class="empty"{% endif %}>{{ meta['title']|default("untitled") }}</h1>
         <aside>
-            <i class="fa fa-user"></i> {{ meta['author'] }} &bullet;
+            <i class="fa fa-user"></i> {{ meta['author'] ?: "unknown" }} &bullet;
             <i class="fa fa-code"></i> {{ meta['language'] }} &bullet;
-            <i class="fa fa-calendar-o"></i> {{ meta['added'].format('d.m.Y H:i') }}
+            <i class="fa fa-calendar-o"></i> {{ meta['added'].format('d.m.Y H:i') }} &bullet;
+            <a href="/{{ meta['slug'] }}/raw"><i class="fa fa-file-text-o"></i> raw</a> &bullet;
+            <a href="#"><i class="fa fa-download"></i> save</a>
 
             {% if meta['description'] %}
                 <p>{{ meta['description'] }}</p>
