@@ -6,7 +6,8 @@
         <aside>
             <i class="fa fa-user"></i> {{ meta['author'] ?: "unknown" }} &bullet;
             <i class="fa fa-code"></i> {{ meta['language'] }} &bullet;
-            <i class="fa fa-calendar-o"></i> {{ meta['added'].format('d.m.Y H:i') }} &bullet;
+            <i class="fa fa-calendar-o"></i> {{ meta['added'].format('d.m.Y H:i') }}
+            <span class="mobile-break">&bullet;</span>
             <a href="/{{ meta['slug'] }}/raw"><i class="fa fa-file-text-o"></i> raw</a> &bullet;
             <a href="#"><i class="fa fa-download"></i> save</a>
 

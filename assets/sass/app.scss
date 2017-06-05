@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-@mixin hoverble($opacity: .2) {
+@mixin hoverable($opacity: .2) {
   transition: opacity .4s ease, filter .4s ease;
 
   filter: grayscale(100%);
@@ -79,7 +79,7 @@ pre {
 
   margin-bottom: 15px;
 
-  @include hoverble(.1);
+  @include hoverable(.1);
 }
 
 #footer {
@@ -97,7 +97,7 @@ pre {
     float: right;
   }
 
-  @include hoverble;
+  @include hoverable;
 }
 
 code {
@@ -127,6 +127,12 @@ form.absolute {
     position: static;
     width: 100%;
     opacity: 1;
+  }
+
+  .mobile-break {
+    display: block;
+    visibility: hidden;
+    height: .5rem;
   }
 
   #header { opacity: 1; filter: none; }
