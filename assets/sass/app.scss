@@ -1,6 +1,8 @@
 @import "../fonts/fira/fira_code.css";
 @import "../../node_modules/font-awesome/scss/font-awesome";
 
+@import "../../node_modules/bootstrap-grid/dist/grid";
+
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,500&subset=latin-ext');
 
 * {
@@ -19,11 +21,13 @@
 $block-padding: 5rem;
 $footer-height: 1.5rem;
 
+$sans-serif-font: "Raleway", sans-serif;
+
 html, body {
   margin: 0;
   padding: 0;
 
-  font-family: 'Raleway', sans-serif;
+  font-family: $sans-serif-font;
 }
 
 a {
@@ -79,7 +83,7 @@ pre {
 
   margin-bottom: 15px;
 
-  @include hoverable(.1);
+  @include hoverable(.3);
 }
 
 #footer {
@@ -98,6 +102,8 @@ pre {
   }
 
   @include hoverable;
+
+  z-index: 0;
 }
 
 code {
@@ -107,6 +113,7 @@ code {
   text-rendering: optimizeLegibility;
   white-space: pre-wrap;
   word-break: break-all;
+  font-weight: 300;
 }
 
 form.absolute {
@@ -117,9 +124,15 @@ form.absolute {
   padding: 20px;
   opacity: .03;
 
-  &:hover {
-    opacity: 1;
-  }
+  z-index: 1000;
+
+  @include hoverable(.03);
+}
+
+#upload-form {
+  margin: 3rem auto;
+  max-width: 1024px;
+  padding: 0 3rem
 }
 
 @media(max-width: 1023px) {
@@ -138,16 +151,33 @@ form.absolute {
   #header { opacity: 1; filter: none; }
 }
 
-input, textarea {
+.control {
   display: block;
   border: none;
   background: white;
   padding: 8px;
   width: 100%;
   margin-bottom: 1rem;
-  font-family: 'Fira Code', 'Fira Mono', monospace !important;
+  font-family: "Raleway", sans-serif;
+  box-shadow: 0 1px 1px 1px rgba(black, .15);
+  border-radius: 1px;
+}
+
+input, textarea {
+  @extend .control;
+}
+
+button {
+  display: inline-block;
+  border-bottom: 3px solid #ff9700;
+  font-weight: bold;
+
+  @extend .control;
 }
 
 label {
-  font-family: "Fira Code", monospace;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  margin-bottom: .25rem;
+  display: block;
 }

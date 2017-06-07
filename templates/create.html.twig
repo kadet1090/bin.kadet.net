@@ -1,26 +1,43 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <form action="/" method="post">
-        <label for="paste">Code =></label>
+    <form action="/" method="post" id="upload-form">
+        <div class="row">
+            <div class="col-md-7">
+                <label for="title">Title</label>
+                <input name="title" id="title" />
+            </div>
+            <div class="col-md-5">
+                <label for="language"><i class="fa fa-fw fa-code"></i> Language</label>
+                <input name="language" id="language" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="author"><i class="fa fa-fw fa-user"></i> Author</label>
+                        <input name="author" id="author" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="key"><i class="fa fa-fw fa-key"></i> Key</label>
+                        <input name="key" id="key"/>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="lines"><i class="fa fa-fw fa-list"></i> Line mappings</label>
+                        <input name="lines" id="lines"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <label for="description"><i class="fa fa-fw fa-comment-o"></i> Description</label>
+                <textarea name="description" id="description" cols="30" rows="5"></textarea>
+            </div>
+        </div>
+        <label for="paste">Code</label>
         <textarea name="paste" id="paste" cols="30" rows="20"></textarea>
 
-        <label for="title">Title =></label>
-        <input name="title" id="title" />
-
-        <label for="author">Author =></label>
-        <input name="author" id="author" />
-
-        <label for="language">Language =></label>
-        <input name="language" id="language" />
-
-        <label for="key">Key =></label>
-        <input name="key" id="key"/>
-
-        <label for="description">Description =></label>
-        <textarea name="description" id="description" cols="30" rows="10"></textarea>
-
-        <button type="submit">ok</button>
+        <button type="submit" class="button"><i class="fa fa-upload"></i> paste</button>
     </form>
 {% endblock %}
 

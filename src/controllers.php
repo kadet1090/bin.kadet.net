@@ -67,7 +67,8 @@ $app->post('/', function(Request $request) use ($db, $app) {
         'description' => $request->get('description'),
         'key' => md5($request->get('key', time())),
         'language' => $request->get('language'),
-        'added' => date('Y-m-d H:i:s')
+        'added' => date('Y-m-d H:i:s'),
+        'lines' => $request->get('lines')
     ]);
 
     return new RedirectResponse("/{$slug}");
@@ -78,7 +79,8 @@ $app->post('/{slug}', function(Request $request, $slug) use ($db, $app) {
         'author' => $request->get('author'),
         'title' => $request->get('title'),
         'description' => $request->get('description'),
-        'language' => $request->get('language')
+        'language' => $request->get('language'),
+        'lines' => $request->get('lines')
     ];
 
     $db->update('pastes', $update, [

@@ -19,22 +19,25 @@
     <pre class="keylighter">{{ paste|highlight(language)|lineify }}</pre>
 
     <form action="/{{ meta['slug'] }}" method="post" class="form absolute">
-        <label for="title">Title =></label>
+        <label for="title">Title</label>
         <input name="title" id="title" value="{{ meta['title'] }}"/>
 
-        <label for="author">Author =></label>
-        <input name="author" id="author" value="{{ meta['author'] }}"/>
-
-        <label for="language">Language =></label>
+        <label for="language"><i class="fa fa-fw fa-code"></i> Language</label>
         <input name="language" id="language" value="{{ meta['language'] }}"/>
 
-        <label for="key">Key =></label>
+        <label for="author"><i class="fa fa-fw fa-user"></i> Author</label>
+        <input name="author" id="author" value="{{ meta['author'] }}"/>
+
+        <label for="key"><i class="fa fa-fw fa-key"></i> Key</label>
         <input name="key" id="key"/>
 
-        <label for="description">Description =></label>
-        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+        <label for="lines"><i class="fa fa-fw fa-list"></i> Line mappings:</label>
+        <input name="lines" id="lines" value="{{ meta['lines'] }}"/>
 
-        <button type="submit">ok</button>
+        <label for="description"><i class="fa fa-fw fa-comment-o"></i> Description</label>
+        <textarea name="description" id="description" cols="30" rows="10">{{ meta['description'] }}</textarea>
+
+        <button type="submit"><i class="fa fa-floppy-o"></i> save</button>
     </form>
 {% endblock %}
 
