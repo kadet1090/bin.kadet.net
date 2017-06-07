@@ -16,7 +16,7 @@
             {% endif %}
         </aside>
     </header>
-    <pre class="keylighter">{{ paste|highlight(language)|lineify }}</pre>
+    <pre class="keylighter">{{ paste|highlight(language)|lineify(meta['mappings']) }}</pre>
 
     <form action="/{{ meta['slug'] }}" method="post" class="form absolute">
         <label for="title">Title</label>

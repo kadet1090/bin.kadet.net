@@ -33,11 +33,21 @@ $app['twig'] = $app->extend('twig', function (Twig_Environment $twig, $app) {
         $no = 1;
         $result = "";
         foreach(preg_split('/\R/', $source) as $i => $line) {
-            if(isset($mapping[$i+1])) {
-                $no = $i+1;
+            $class = ['line'];
+
+            if(isset($mapping[$i+1]['line'])) {
+                $no = $mapping[$i+1]['line'];
             }
 
-            $result .= '<div class="line"><code><span class="counter" data-ln="'.$no.'"></span>'.$line."\n</code></div>";
+            if(isset($mapping[$i+1]['highlight']) && $mapping[$i+1]['highlight']) {
+                $class[] = "highlight";
+            }
+
+            $result .= sprintf(
+                "<div class=\"%s\"><code><span class=\"counter\" data-ln=\"%d\" title=\"%d\"></span>%s\n</code></div>",
+                implode(' ', $class), $no, $i+1, $line
+            );
+
             $no++;
         }
 

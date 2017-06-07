@@ -18,6 +18,28 @@ function paste_path($slug) {
     return __DIR__.'/../var/pastes/'.$slug;
 }
 
+function get_range($token) {
+    return strpos($token, ':') !== false ? explode(':', $token) : [$token, $token];
+}
+
+function process_mappings($lines) {
+    $result = [];
+
+    foreach(preg_split('/\s+/', $lines) as $i => $token) {
+        if($token[0] == '!') {
+            list($start, $end) = get_range(substr($token, 1));
+            for($i = (int)$start; $i <= (int)$end; $i++) {
+                $result[$i]['highlight'] = true;
+            }
+        } else {
+            list($from, $to) = explode(':', $token);
+            $result[$from]['line'] = $to;
+        }
+    }
+
+    return $result;
+}
+
 /** @var \Doctrine\DBAL\Connection $db */
 $db = $app['db'];
 
@@ -34,6 +56,7 @@ $app->get('/{slug}', function ($slug) use ($app, $db) {
     $meta = $db->fetchAssoc('SELECT * FROM pastes WHERE slug = :slug', [ 'slug' => $slug ]);
     $language = $meta['language'] ?? 'text';
     $meta['added'] = DateTime::createFromFormat('Y-m-d H:i:s', $meta['added']);
+    $meta['mappings'] = process_mappings($meta['lines']);
 
     return $app['twig']->render('paste.html.twig', compact('paste', 'meta', 'language'));
 })->bind('paste');
