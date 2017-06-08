@@ -7,13 +7,31 @@
         <title>{% block title '' %} Kadet's Bin</title>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
-        <link href="{{ asset('css/styles/php.css') }}" rel="stylesheet" id="theme" />
+        <link href="{{ asset('css/styles/' ~ global.request.cookies.get('theme', 'github') ~ '.css') }}" rel="stylesheet" id="theme" />
     </head>
     <body>
         {% block content '' %}
-        {% block scripts '' %}
         <footer id="footer">
+            <select id="theme-select">
+                <option value="github">GitHub</option>
+                <option value="php">PHP</option>
+                <option value="keylighter">KeyLighter (dark)</option>
+            </select>
+            &bullet;
             <a href="#">#{{ version }}</a> &bullet; KeyLighter: {{ constant('\\Kadet\\Highlighter\\KeyLighter::VERSION') }} &bullet; <img src="/img/kadet.png" class="logo"/> &copy; 2017
         </footer>
+
+        <script>
+            select = document.getElementById('theme-select');
+            document.addEventListener('change', function(event) {
+                if(event.target.id !== "theme-select") return;
+
+                var theme = event.target.options[event.target.selectedIndex].value;
+
+                document.getElementById('theme').href = "{{ asset('css/styles/') }}" + theme + ".css";
+                document.cookie = "theme=" + theme + "; path=/"
+            });
+        </script>
+        {% block scripts '' %}
     </body>
 </html>

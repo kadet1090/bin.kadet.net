@@ -12,14 +12,6 @@ $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 
-function wrap($source) {
-    $stack = [];
-
-    return implode('\n', array_map(function($line) use (&$stack) {
-        
-    }, explode('\n', $source)));
-}
-
 $app['twig'] = $app->extend('twig', function (Twig_Environment $twig, $app) {
     $twig->addFilter(new Twig_Filter('highlight', function($source, $language) {
         return \Kadet\Highlighter\KeyLighter::get()->highlight(
@@ -55,7 +47,6 @@ $app['twig'] = $app->extend('twig', function (Twig_Environment $twig, $app) {
     }, ['is_safe' => ['html']]));
 
     $twig->addGlobal('version', trim(`git rev-parse --short HEAD`));
-
     return $twig;
 });
 

@@ -25,6 +25,10 @@ function get_range($token) {
 function process_mappings($lines) {
     $result = [];
 
+    if(empty($lines)) {
+        return $result;
+    }
+
     foreach(preg_split('/\s+/', $lines) as $i => $token) {
         if($token[0] == '!') {
             list($start, $end) = get_range(substr($token, 1));
