@@ -24,7 +24,7 @@ $app['twig'] = $app->extend('twig', function (Twig_Environment $twig, $app) {
     $twig->addFilter(new Twig_Filter('lineify', function($source, $mapping = []) {
         $no = 1;
         $result = "";
-        foreach(preg_split('/\R/', $source) as $i => $line) {
+        foreach(preg_split('/\R/u', $source) as $i => $line) {
             $class = ['line'];
 
             if(isset($mapping[$i+1]['line'])) {
