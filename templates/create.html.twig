@@ -21,10 +21,19 @@
                     </div>
                     <div class="col-md-6">
                         <label for="key"><i class="fa fa-fw fa-key"></i> Key</label>
-                        <input name="key" id="key"/>
+                        <div id="key-input">
+                            <input name="key" id="key"/>
+                            <button id="key-save" type="button" title="Remember key"><i class="fa fa-floppy-o"></i></button>
+                        </div>
                     </div>
                     <div class="col-md-12">
-                        <label for="lines"><i class="fa fa-fw fa-list"></i> Line mappings</label>
+                        <label for="lines">
+                            <i class="fa fa-fw fa-list"></i> Line mappings:
+                        </label>
+
+                        <small><code class="explanation">1:10</code> - makes line 1 to appear as 10</small>
+                        <small><code class="explanation">!3:5</code> - highlights line from 3 to 5</small>
+
                         <input name="lines" id="lines"/>
                     </div>
                 </div>
@@ -44,6 +53,11 @@
 
 {% block scripts %}
     <script>
-        document.getElementById('key').value = window.localStorage.getItem("key")
+        document.getElementById('key').value = window.localStorage.getItem("key");
+        document.getElementById('key-save').addEventListener('click', function(e) {
+            window.localStorage.setItem('key', document.getElementById('key').value);
+            e.stopPropagation();
+            e.preventDefault();
+        })
     </script>
 {% endblock %}

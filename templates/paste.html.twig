@@ -29,9 +29,17 @@
         <input name="author" id="author" value="{{ meta['author'] }}"/>
 
         <label for="key"><i class="fa fa-fw fa-key"></i> Key</label>
-        <input name="key" id="key"/>
+        <div id="key-input">
+            <input name="key" id="key"/>
+            <button id="key-save" title="Remember key"><i class="fa fa-floppy-o"></i></button>
+        </div>
 
-        <label for="lines"><i class="fa fa-fw fa-list"></i> Line mappings:</label>
+        <label for="lines">
+            <i class="fa fa-fw fa-list"></i> Line mappings:
+        </label>
+        <small><code class="explanation">1:10</code> - makes line 1 to appear as 10</small>
+        <small><code class="explanation">!3:5</code> - highlights line from 3 to 5</small>
+
         <input name="lines" id="lines" value="{{ meta['lines'] }}"/>
 
         <label for="description"><i class="fa fa-fw fa-comment-o"></i> Description</label>
@@ -43,6 +51,11 @@
 
 {% block scripts %}
     <script>
-        document.getElementById('key').value = window.localStorage.getItem("key")
+        document.getElementById('key').value = window.localStorage.getItem("key");
+        document.getElementById('key-save').addEventListener('click', function() {
+            window.localStorage.setItem('key', document.getElementById('key').value);
+            e.stopPropagation();
+            e.preventDefault();
+        })
     </script>
 {% endblock %}

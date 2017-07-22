@@ -163,6 +163,21 @@ form.absolute {
   border-radius: 1px;
 }
 
+#key-input {
+  position: relative;
+
+  > button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    box-shadow: none;
+    border-bottom: none;
+
+    @include hoverable(.2);
+  }
+}
+
 input, textarea {
   @extend .control;
 }
@@ -173,6 +188,8 @@ button {
   font-weight: bold;
 
   @extend .control;
+
+  cursor: pointer;
 }
 
 label {
