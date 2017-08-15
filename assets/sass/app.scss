@@ -5,10 +5,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,500&subset=latin-ext');
 
-* {
-  box-sizing: border-box;
-}
-
 @mixin hoverable($opacity: .2) {
   transition: opacity .4s ease, filter .4s ease;
 
@@ -22,6 +18,13 @@ $block-padding: 5rem;
 $footer-height: 1.5rem;
 
 $sans-serif-font: "Raleway", sans-serif;
+
+$transform-time: 200ms;
+
+* {
+  box-sizing: border-box;
+  transition: color $transform-time ease, background $transform-time ease;
+}
 
 html, body {
   margin: 0;

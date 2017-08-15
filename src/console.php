@@ -23,15 +23,12 @@ function saveTableToDb(\Doctrine\DBAL\Schema\AbstractSchemaManager $schema, \Doc
     }
 }
 
-$console = new Application('Kadet\s pastebin', 'n/a');
+$console = new Application('Kadet\'s pastebin', '1.0');
 $console->getDefinition()->addOption(new InputOption('--env', '-e', InputOption::VALUE_REQUIRED, 'The Environment name.', 'dev'));
 $console->setDispatcher($app['dispatcher']);
 $console
     ->register('migrate')
-    ->setDefinition(array(
-        // new InputOption('some-option', null, InputOption::VALUE_NONE, 'Some help'),
-    ))
-    ->setDescription('My command description')
+    ->setDescription('Migrates DB to proper version')
     ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
         /** @var Doctrine\DBAL\Connection $db */
         $db = $app['db'];
@@ -53,6 +50,53 @@ $console
         $pastes->addIndex(['slug'], 'slug_idx');
 
         saveTableToDb($db->getSchemaManager(), $pastes);
+    })
+;
+
+$console
+    ->register('list')
+    ->setDefinition([
+         new InputOption('author', 'a', InputOption::VALUE_OPTIONAL, 'Filters by author'),
+         new InputOption('language', 'l', InputOption::VALUE_OPTIONAL, 'Filters by language'),
+         new InputOption('url', 'u', InputOption::VALUE_OPTIONAL, 'Page url'),
+    ])
+    ->setDescription('Lists all pastes')
+    ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+        /** @var Doctrine\DBAL\Connection $db */
+        $db = $app['db'];
+
+        $query = $db->createQueryBuilder()->from('pastes')->select('*');
+
+        if($input->getOption('author')) {
+            $query
+                ->andWhere('author = :author')
+                ->setParameter('author', $input->getOption('author'))
+            ;
+        }
+
+        if($input->getOption('language')) {
+            $query
+                ->andWhere('language LIKE :language')
+                ->setParameter('language', $input->getOption('language'))
+            ;
+        }
+
+        $url = $input->getOption('url') ? 'http://'.$input->getOption('url').'/' : null;
+
+        $found = $db->fetchAll($query);
+        $table = new \Symfony\Component\Console\Helper\Table($output);
+        $table
+            ->setHeaders(['Title', 'Author', 'Language', 'Url'])
+            ->setRows(array_map(function($paste) use ($app, $url) {
+                return [
+                    $paste['title'] ?: 'Untitled',
+                    $paste['author'] ?: 'unknown',
+                    $paste['language'] ?: 'plaintext',
+                    $url.$paste['slug']
+                ];
+            }, $found))
+        ;
+        $table->render();
     })
 ;
 

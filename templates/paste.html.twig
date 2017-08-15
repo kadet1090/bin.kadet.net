@@ -1,5 +1,11 @@
 {% extends "layout.html.twig" %}
 
+{%- block title -%}
+    {% if meta.title is not empty%}&quot;{{ meta.title }}&quot;{% endif %}
+    {% if meta.author is not empty %}by {{ meta.author }}{% endif %}
+    on
+{%- endblock -%}
+
 {% block content %}
     <header id="header">
         <h1 {% if meta['title'] is empty %}class="empty"{% endif %}>{{ meta['title']|default("untitled") }}</h1>

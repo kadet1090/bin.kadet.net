@@ -86,7 +86,6 @@ $app->post('/', function(Request $request) use ($db, $app) {
         throw new \Symfony\Component\HttpKernel\Exception\BadRequestHttpException('Paste is required.');
     }
 
-
     $db->insert('pastes', [
         'slug' => $slug,
         'author' => $request->get('author'),
