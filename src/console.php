@@ -83,7 +83,7 @@ $console
 
         $url = $input->getOption('url') ? 'http://'.$input->getOption('url').'/' : null;
 
-        $found = $db->fetchAll($query);
+        $found = $db->fetchAll($query, $query->getParameters());
         $table = new \Symfony\Component\Console\Helper\Table($output);
         $table
             ->setHeaders(['Title', 'Author', 'Language', 'Url'])
