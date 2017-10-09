@@ -2,8 +2,13 @@
     "name": "kadet/pastebin",
     "description": "Kadet's pastebin",
     "license": "MIT",
+    "config": {
+        "platform": {
+            "php": "7.0"
+        }
+    },
     "require": {
-        "php": ">=7.0",
+        "php": "^7.0",
         "silex/silex": "~2.0",
         "silex/web-profiler": "~2.0",
         "symfony/asset": "~2.8|^3.0",
