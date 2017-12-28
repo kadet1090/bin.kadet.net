@@ -482,12 +482,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kadet1090/KeyLighter.git",
-                "reference": "8852dd74d0c31acd85045ae345bbcb976a649160"
+                "reference": "81aad7fdab1550068e3d8005e8d05efb9c4a3860"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kadet1090/KeyLighter/zipball/8852dd74d0c31acd85045ae345bbcb976a649160",
-                "reference": "8852dd74d0c31acd85045ae345bbcb976a649160",
+                "url": "https://api.github.com/repos/kadet1090/KeyLighter/zipball/81aad7fdab1550068e3d8005e8d05efb9c4a3860",
+                "reference": "81aad7fdab1550068e3d8005e8d05efb9c4a3860",
                 "shasum": ""
             },
             "require": {
@@ -524,7 +524,7 @@
                 }
             ],
             "description": "Yet another syntax highlighter for PHP",
-            "time": "2017-10-09 16:12:23"
+            "time": "2017-12-28T16:04:41+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -800,16 +800,16 @@
         },
         {
             "name": "silex/silex",
-            "version": "v2.2.0",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silexphp/Silex.git",
-                "reference": "ec7d5b5334465414952d4b2e935e73bd085dbbbb"
+                "reference": "a70863fdfe716b026dbc14280c49f209561ad6a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Silex/zipball/ec7d5b5334465414952d4b2e935e73bd085dbbbb",
-                "reference": "ec7d5b5334465414952d4b2e935e73bd085dbbbb",
+                "url": "https://api.github.com/repos/silexphp/Silex/zipball/a70863fdfe716b026dbc14280c49f209561ad6a6",
+                "reference": "a70863fdfe716b026dbc14280c49f209561ad6a6",
                 "shasum": ""
             },
             "require": {
@@ -885,20 +885,20 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2017-07-23T07:40:14+00:00"
+            "time": "2017-12-14T19:22:47+00:00"
         },
         {
             "name": "silex/web-profiler",
-            "version": "v2.0.9",
+            "version": "v2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silexphp/Silex-WebProfiler.git",
-                "reference": "cd76e55490d556a81378b8230e28f55536811418"
+                "reference": "9657191cee54ac2a4df9e388baf4e693a3285867"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Silex-WebProfiler/zipball/cd76e55490d556a81378b8230e28f55536811418",
-                "reference": "cd76e55490d556a81378b8230e28f55536811418",
+                "url": "https://api.github.com/repos/silexphp/Silex-WebProfiler/zipball/9657191cee54ac2a4df9e388baf4e693a3285867",
+                "reference": "9657191cee54ac2a4df9e388baf4e693a3285867",
                 "shasum": ""
             },
             "require": {
@@ -942,7 +942,7 @@
             ],
             "description": "A WebProfiler for Silex",
             "homepage": "http://silex.sensiolabs.org/",
-            "time": "2017-04-23T23:11:39+00:00"
+            "time": "2017-12-11T23:38:10+00:00"
         },
         {
             "name": "symfony/asset",
@@ -1673,16 +1673,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
                 "shasum": ""
             },
             "require": {
@@ -1694,7 +1694,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
@@ -1728,20 +1728,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
-                "reference": "b6482e68974486984f59449ecea1fbbb22ff840f"
+                "reference": "0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/b6482e68974486984f59449ecea1fbbb22ff840f",
-                "reference": "b6482e68974486984f59449ecea1fbbb22ff840f",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff",
+                "reference": "0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff",
                 "shasum": ""
             },
             "require": {
@@ -1751,7 +1751,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
@@ -1787,7 +1787,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/routing",
