@@ -482,12 +482,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kadet1090/KeyLighter.git",
-                "reference": "81aad7fdab1550068e3d8005e8d05efb9c4a3860"
+                "reference": "0e5dd037880a2a1b7d33390d414f522b83b58565"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kadet1090/KeyLighter/zipball/81aad7fdab1550068e3d8005e8d05efb9c4a3860",
-                "reference": "81aad7fdab1550068e3d8005e8d05efb9c4a3860",
+                "url": "https://api.github.com/repos/kadet1090/KeyLighter/zipball/0e5dd037880a2a1b7d33390d414f522b83b58565",
+                "reference": "0e5dd037880a2a1b7d33390d414f522b83b58565",
                 "shasum": ""
             },
             "require": {
@@ -524,7 +524,7 @@
                 }
             ],
             "description": "Yet another syntax highlighter for PHP",
-            "time": "2017-12-28T16:04:41+00:00"
+            "time": "2018-01-04T21:50:59+00:00"
         },
         {
             "name": "monolog/monolog",
