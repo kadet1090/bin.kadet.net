@@ -20,7 +20,8 @@
         "symfony/twig-bridge": "~2.8|^3.0",
         "symfony/validator": "~2.8|^3.0",
         "kadet/keylighter": "dev-master",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "hashids/hashids": "^2.0"
     },
     "autoload": {
         "psr-0": { "": "src/" }

@@ -44,6 +44,50 @@ function process_mappings($lines) {
     return $result;
 }
 
+function lock($file, $wait = 10, $timeout = 1000)
+{
+    $time = 0;
+    while (($locked = flock($file, LOCK_EX, $block)) === false && $time <= $timeout && $block) {
+        $time += $wait;
+        usleep($time);
+    }
+
+    if (!$locked) {
+        throw new \Symfony\Component\HttpKernel\Exception\HttpException(408, "Cannot obtain lock for id file.");
+    }
+}
+
+function next_id()
+{
+    touch(__DIR__."/../var/id.next");
+    $file = fopen(__DIR__."/../var/id.next", "r+");
+    lock($file);
+
+    $read = fscanf($file, "%d\n");
+    if (empty($read)) {
+        $read = [ rand(500, 800) ];
+    }
+
+    list($id) = $read;
+    $next = $id + rand(3, 7);
+    rewind($file);
+    fprintf($file, "%d\n", $next);
+    ftruncate($file, ftell($file));
+
+    flock($file, LOCK_UN);
+    fclose($file);
+
+    return $id;
+}
+
+function slug(Request $request)
+{
+    $hashids = new \Hashids\Hashids();
+    $id = next_id();
+
+    return $hashids->encode($id);
+}
+
 /** @var \Doctrine\DBAL\Connection $db */
 $db = $app['db'];
 
@@ -67,14 +111,14 @@ $app->get('/{slug}', function ($slug) use ($app, $db) {
 
 $app->get('/{slug}/raw', function ($slug) use ($app, $db) {
     if(!file_exists(paste_path($slug))) {
-        return $app->abort(404);
+        return $app->abort(403);
     }
 
     return new Response(file_get_contents(paste_path($slug)), 200, ['Content-Type' => 'text/plain']);
 })->bind('paste-raw');
 
 $app->post('/', function(Request $request) use ($db, $app) {
-    $slug = uniqid(null, true);
+    $slug = slug($request);
 
     if($request->request->has('paste')) {
         file_put_contents(paste_path($slug), $request->get('paste'));
