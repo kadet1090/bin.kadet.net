@@ -1,7 +1,8 @@
 {% extends "layout.html.twig" %}
 
 {%- block title -%}
-    {% if meta.title is not empty%}&quot;{{ meta.title }}&quot;{% endif %}
+    #{{ meta.slug }}
+    {% if meta.title is not empty%} | &quot;{{ meta.title }}&quot;{% endif %}
     {% if meta.author is not empty %}by {{ meta.author }}{% endif %}
     on
 {%- endblock -%}
@@ -10,8 +11,9 @@
     <header id="header">
         <h1 {% if meta['title'] is empty %}class="empty"{% endif %}>{{ meta['title']|default("untitled") }}</h1>
         <aside>
+            <i class="fa fa-hashtag"></i> {{ meta.slug }} &bullet;
             <i class="fa fa-user"></i> {{ meta['author'] ?: "unknown" }} &bullet;
-            <i class="fa fa-code"></i> {{ meta['language'] }} &bullet;
+            <i class="fa fa-code"></i> {{ meta['language'] ?: 'plain' }} &bullet;
             <i class="fa fa-calendar-o"></i> {{ meta['added'].format('d.m.Y H:i') }}
             <span class="mobile-break">&bullet;</span>
             <a href="/{{ meta['slug'] }}/raw"><i class="fa fa-file-text-o"></i> raw</a> &bullet;
