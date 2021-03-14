@@ -6,3 +6,4 @@
 /var/id.next
 /web/*
 !/web/index*
+/hosts.yml

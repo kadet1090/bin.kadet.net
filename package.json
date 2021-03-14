@@ -13,5 +13,8 @@
     "gulp-sass": "^2.3.2",
     "gulp-util": "^3.0.7",
     "merge-stream": "^1.0.0"
+  },
+  "scripts": {
+    "build": "gulp --production"
   }
 }

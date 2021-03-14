@@ -12,6 +12,18 @@ $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 
+function get_pastebin_version() {
+    if (file_exists($versionFile = __DIR__ . '/../.version')) {
+        return file_get_contents($versionFile);
+    }
+
+    if (`which git`) {
+        return trim(`git rev-parse --short HEAD`);
+    }
+
+    return '0.x';
+}
+
 $app['twig'] = $app->extend('twig', function (Twig_Environment $twig, $app) {
     $twig->addFilter(new Twig_Filter('highlight', function($source, $language) {
         return \Kadet\Highlighter\KeyLighter::get()->highlight(
@@ -46,7 +58,7 @@ $app['twig'] = $app->extend('twig', function (Twig_Environment $twig, $app) {
         return $result;
     }, ['is_safe' => ['html']]));
 
-    $twig->addGlobal('version', trim(`git rev-parse --short HEAD`));
+    $twig->addGlobal('version', get_pastebin_version());
     return $twig;
 });
 
