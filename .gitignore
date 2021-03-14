@@ -2,7 +2,6 @@
 /.idea/
 /node_modules/
 /config/local.php
-/var/app.db
 /var/id.next
 /web/*
 !/web/index*

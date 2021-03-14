@@ -15,8 +15,8 @@ set('repository', 'git@github.com:kadet1090/bin.kadet.net.git');
 set('git_tty', true); 
 
 // Shared files/dirs between deploys 
-set('shared_files', ['var/app.db', 'var/id.next']);
-set('shared_dirs', ['var/pastes']);
+set('shared_files', ['var/id.next']);
+set('shared_dirs', ['var/pastes', 'var/database']);
 
 // Writable dirs by web server 
 set('writable_dirs', ['var']);

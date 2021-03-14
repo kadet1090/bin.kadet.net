@@ -8,12 +8,12 @@ $app['twig.path'] = array(__DIR__.'/../templates');
 $app['twig.options'] = array('cache' => __DIR__.'/../var/cache/twig');
 
 $app->register(new MonologServiceProvider(), array(
-    'monolog.logfile' => __DIR__.'/../var/logs/silex_dev.log',
+    'monolog.logfile' => __DIR__.'/../var/logs/prod.log',
 ));
 
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
         'driver'   => 'pdo_sqlite',
-        'path'     => __DIR__.'/../var/app.db',
+        'path'     => __DIR__.'/../var/database/app.db',
     ),
 ));
